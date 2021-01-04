@@ -1,8 +1,8 @@
 // This file will allow you to use the equivalent to SELECTS in graphQL.
 
 import graphql from 'graphql';
-import BookType from "./books/bookType.js";
-import AuthorType from "./books/authorType.js";
+import BookType from "./responses/bookType.js";
+import AuthorType from "./responses/authorType.js";
 import Book from "./models/book.js";
 import Author from "./models/author.js";
 
