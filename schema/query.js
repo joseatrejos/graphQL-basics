@@ -40,6 +40,7 @@ const query = new GraphQLObjectType({
 
             resolve(parent, args) {
                 return Book.find(args);
+                // If you need to search for a single status (to define non-deleted items, for example) you could use this instead of args: { deleted: "yes" }
             }
             
         },
