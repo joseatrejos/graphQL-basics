@@ -7,7 +7,7 @@ import Book from "./models/book.js";
 import Author from "./models/author.js";
 
 // Esta constante va a recibir los parámetros que GraphQL permitirá utilizar en tus queries
-const {GraphQLObjectType, GraphQLList, GraphQLID} = graphql;
+const {GraphQLObjectType, GraphQLList, GraphQLID, GraphQLString} = graphql;
 
 const query = new GraphQLObjectType({
     // You name the action, in this case Query
@@ -27,7 +27,24 @@ const query = new GraphQLObjectType({
             }
             
         },
+
+
+        // To filter results according to a certain input, you must follow any of the next 2 examples: 
+        booksByName: {
+
+            type: new GraphQLList(BookType),
+
+            args: {
+                name: { type:GraphQLString }
+            },
+
+            resolve(parent, args) {
+                return Book.find(args);
+            }
+            
+        },
         
+
         book: {
             type: BookType,
 
@@ -40,6 +57,7 @@ const query = new GraphQLObjectType({
             }
         },
 
+        
         // Now we will request authors
         authors: {
             type: new GraphQLList(AuthorType),
