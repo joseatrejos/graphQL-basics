@@ -61,7 +61,11 @@ const mutation = new GraphQLObjectType({
             },
 
             resolve(parent, args) {
-                return Book.findByIdAndUpdate(args.id, args);
+                return Book.findByIdAndUpdate(
+                    args.id, 
+                    args
+                    // To send a default parameter (for example for a hide/delete), you can just use { deleted:"yes" }
+                );
             }
         },
 
