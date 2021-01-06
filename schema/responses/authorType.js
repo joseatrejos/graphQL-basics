@@ -9,7 +9,7 @@ const {GraphQLObjectType, GraphQLID, GraphQLString, GraphQLList} = graphql;
 const Authortype = new GraphQLObjectType({
     name: 'Authortype',
 
-        // Deja esta madre como función para poder hacer relaciones entre queries
+    // Deja esta madre como función para poder hacer relaciones entre queries
     fields: () => ({
         id: {type: GraphQLID},
         name: {type: GraphQLString},

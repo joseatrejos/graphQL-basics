@@ -44,6 +44,17 @@ const query = new GraphQLObjectType({
             }
             
         },
+
+        // No idea how this works, but it could be useful to search books by name
+        booksSearch: {
+            type: new GraphQLList(BookType),
+            args: {
+                name: {type: GraphQLString}
+            },
+            resolve(parent, args){
+                return Book.find( { name: {$regex: args.name} } );      // Búsqueda en formate where like
+            }
+        },
         
 
         book: {
